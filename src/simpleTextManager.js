@@ -18,7 +18,7 @@ class SimpleTextManager {
             let user=process.env.TEXTSTORE_USER || 'noUserSet';
             let pw=process.env.TEXTSTORE_PW || 'noPasswordSet';
             let authsource=process.env.MONGO_AUTHSOURCE || 'noAuthSourceSet';
-            mongoose.set('strictQuery', false);
+            mongoose.set('strictQuery', true);
             return mongoose.connect(connection, {user: user,
                                                  pass: pw,
                                                  authSource: authsource})
@@ -45,7 +45,7 @@ class SimpleTextManager {
 
         let connection = `mongodb://${user}${dbServer}/${dbName}`
 				console.log("Using connection", connection);
-        mongoose.set('strictQuery', false);
+        mongoose.set('strictQuery', true);
         return mongoose.connect(connection)
             .then( () => console.log('Connected to database', dbName))
             .catch( (err) => {
