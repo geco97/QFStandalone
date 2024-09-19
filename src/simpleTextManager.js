@@ -31,9 +31,10 @@ class SimpleTextManager {
                     //throw new Error('Failed to connect to database.');
                 });
         }
-
+        console.log(process.env.TEXTSTORE_HOST)
         if (!process.env.TEXTSTORE_HOST) {
-            console.log('WARNING: the environment variable TEXTSTORE_HOST is not set');        
+            console.log('WARNING: the environment variable TEXTSTORE_HOST is not set');    
+            dbServer = '127.0.0.1:' + dbPort;    
         } else {
             dbServer = process.env.TEXTSTORE_HOST + ':' + dbPort;
         }
